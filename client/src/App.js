@@ -5,17 +5,24 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
 import Login from './components/login.component'
 import SignUp from './components/signup.component'
-import UserDetails from './components/userDetails'
+import UserHomepage from './components/userHomepage.component'
+import Admin from './components/admin.component'
+import UserMeterSet from './components/userMeterSet.component'
+import UserPayView from './components/userPayViewBill.component'
+import UserTopup from './components/userTopup.component'
+import AdminSetMeter from './components/adminsetmeter.component'
 
 
 function App() {
+  //const isLoggedIn = window.localStorage.getItem("loggedIn");
+
   return (
     <Router>
       <div className="App">
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+        {/* <nav className="navbar navbar-expand-lg navbar-light fixed-top">
           <div className="container">
             <Link className="navbar-brand" to={'/sign-in'}>
-              IGSE
+              IGSE Energy APP
             </Link>
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav ml-auto">
@@ -32,15 +39,26 @@ function App() {
               </ul>
             </div>
           </div>
-        </nav>
+        </nav> */}
 
         <div className="auth-wrapper">
           <div className="auth-inner">
             <Routes>
+              {/* //isLoggedIn == "true" ? <UserHomepage /> : */}
               <Route exact path="/" element={<Login />} />
               <Route path="/sign-in" element={<Login />} />
               <Route path="/sign-up" element={<SignUp />} />
-              <Route path="/userDetails" element={<UserDetails />} />
+              <Route path="/userHomepage" element={<UserHomepage />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="/adminsetmeter" element={<AdminSetMeter />} />
+
+              <Route path="/userMeterSet" element={<UserMeterSet />} />
+              <Route path="/userPayview" element={<UserPayView />} />
+              <Route path="/userTopup" element={<UserTopup />} />
+
+
+
+
             </Routes>
           </div>
         </div>

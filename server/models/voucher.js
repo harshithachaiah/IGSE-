@@ -4,8 +4,13 @@ const VoucherDetails = new mongoose.Schema({
 
     voucher: {
         type: String,
-
         unique: true
+    },
+
+    used: {
+        type: String,
+        unique: true
+
     },
     date:
     {

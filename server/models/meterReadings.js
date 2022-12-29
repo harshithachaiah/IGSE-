@@ -22,6 +22,12 @@ const MeterReadings = new mongoose.Schema({
     {
         type: Number,
         required: true
+    },
+    customerId:
+    {
+        type: String,
+        required: true
+
     }
 
 

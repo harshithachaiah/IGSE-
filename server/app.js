@@ -36,13 +36,31 @@ app.post("/register", async (req, res) => {
         const olduser = await User.findOne({ customerid })
         const validvoucher = await Voucher.findOne({ voucher })
 
+        console.log(validvoucher);
+        console.log(validvoucher.used);
+
+
+        const filter = { topupvoucher: validvoucher.voucher };
+
+
+        console.log(filter);
+
+
+
+
         if (olduser) {
             return res.json({ error: "User Exists" });
         }
-
+        /// add below && !validvoucher.isvalid
+        //&& validvoucher == valid  !validvoucher.valid    && !validvoucher.valid     voucher.update check out this
         if (!validvoucher) {
             console.log("Invalid voucher");
             return res.json({ error: "Not a valid voucher" });
+
+        }
+        if (validvoucher.used == "true") {
+            console.log("Voucher Already used");
+            return res.json({ error: "Voucher Already used" });
 
         }
 
@@ -57,7 +75,13 @@ app.post("/register", async (req, res) => {
             voucher
 
         });
+
+
+
+        await Voucher.findOneAndUpdate({ voucher }, { used: "true" });
         return res.send({ status: "ok" })
+
+
 
 
     } catch (error) {
@@ -112,7 +136,7 @@ app.post("/userData", async (req, res) => {
 //add new voucher
 app.post("/voucher", async (req, res) => {
     const testvoucher = { voucher } = req.body;
-    console.log(testvoucher);
+    //console.log(testvoucher);
 
     try {
 
@@ -123,7 +147,8 @@ app.post("/voucher", async (req, res) => {
 
         await Voucher.create({
 
-            voucher
+            voucher,
+            used: "false"
 
         });
         res.send({ status: "ok" })
@@ -136,15 +161,15 @@ app.post("/voucher", async (req, res) => {
 
 
 app.post("/usermeterset", async (req, res) => {
-    const meterdetails = { datevalue, daymeterreading, nightmeterreading, gasmeterreading } = req.body;
+    const meterdetails = { datevalue, daymeterreading, nightmeterreading, gasmeterreading, customerId } = req.body;
     try {
         await UserMeterReading.create({
 
             datevalue,
             daymeterreading,
             nightmeterreading,
-            gasmeterreading
-
+            gasmeterreading,
+            customerId
 
         });
         return res.send({ status: "ok" })
@@ -157,6 +182,37 @@ app.post("/usermeterset", async (req, res) => {
 
 
 });
+
+// app.post("/topup", async (req, res) => {
+//     const topupvoucher = { voucher } = req.body;
+//     try {
+
+
+//         const validvoucher = await Voucher.findOne({ voucher })
+
+//         if (!validvoucher) {
+//             console.log("Invalid voucher");
+//             return res.json({ error: "Not a valid voucher" });
+
+//         }
+//         if (validvoucher.used == "true") {
+//             console.log("Voucher Already used");
+//             return res.json({ error: "Voucher Already used" });
+
+//         }
+//         await Voucher.updateOne({
+//             used: "true"
+//         });
+//         return res.send({ status: "ok" })
+
+
+//     } catch (error) {
+//         res.send({ status: "error" })
+
+//     }
+
+
+//});
 
 
 

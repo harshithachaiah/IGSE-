@@ -36,14 +36,10 @@ app.post("/register", async (req, res) => {
         const olduser = await User.findOne({ customerid })
         const validvoucher = await Voucher.findOne({ voucher })
 
-        console.log(validvoucher);
-        console.log(validvoucher.used);
+        console.log(validvoucher, "voucher");
 
 
-        const filter = { topupvoucher: validvoucher.voucher };
 
-
-        console.log(filter);
 
 
 
@@ -183,36 +179,7 @@ app.post("/usermeterset", async (req, res) => {
 
 });
 
-// app.post("/topup", async (req, res) => {
-//     const topupvoucher = { voucher } = req.body;
-//     try {
 
-
-//         const validvoucher = await Voucher.findOne({ voucher })
-
-//         if (!validvoucher) {
-//             console.log("Invalid voucher");
-//             return res.json({ error: "Not a valid voucher" });
-
-//         }
-//         if (validvoucher.used == "true") {
-//             console.log("Voucher Already used");
-//             return res.json({ error: "Voucher Already used" });
-
-//         }
-//         await Voucher.updateOne({
-//             used: "true"
-//         });
-//         return res.send({ status: "ok" })
-
-
-//     } catch (error) {
-//         res.send({ status: "error" })
-
-//     }
-
-
-//});
 
 
 

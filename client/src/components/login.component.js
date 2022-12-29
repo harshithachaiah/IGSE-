@@ -51,6 +51,7 @@ export default class Login extends Component {
         else if (data.status === "ok") {
 
           window.localStorage.setItem("token", data.data);
+          window.localStorage.setItem("customerid", customerid)
           window.localStorage.setItem("loggedIn", true);
 
           if (customerid == "gse@shangrila.gov.un") {
@@ -136,9 +137,9 @@ export default class Login extends Component {
             Submit
           </button>
         </div>
-        <p className="forgot-password text-right">
+        {/* <p className="forgot-password text-right">
           Forgot <a href="#">password?</a>
-        </p>
+        </p> */}
       </form>
     )
   }

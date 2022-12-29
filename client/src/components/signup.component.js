@@ -56,6 +56,11 @@ export default class SignUp extends Component {
           alert("Enter valid voucher")
         }
 
+        if (data.error === "Voucher Already used") {
+
+          alert("Voucher Already used")
+        }
+
         else if (data.status === "ok") {
           console.log(data, "user Registered");
           alert("Registration successfull")

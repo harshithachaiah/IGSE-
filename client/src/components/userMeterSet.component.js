@@ -35,6 +35,7 @@ export default class UserMeterSet extends Component {
                 daymeterreading,
                 nightmeterreading,
                 gasmeterreading,
+                customerId: window.localStorage.getItem("customerid")
 
 
             }),

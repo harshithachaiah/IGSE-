@@ -66,9 +66,9 @@ export default class SignUp extends Component {
           alert("Registration successfull")
           window.location.href = "./sign-in"
         }
-        else {
-          alert("Enter Valid Details")
-        }
+        // else {
+        //   alert("Enter Valid Details")
+        // }
 
       })
 

@@ -56,11 +56,13 @@ export default class UserHomepage extends Component {
                 <Link className="nav-link" to={'/userMeterSet'}>
                     Submit New Meter Reading
                 </Link>
-                <Link className="nav-link" to={'/userPayView'}>
-                    View/Pay bills
-                </Link>
-                <Link className="nav-link mb-3" to={'/userTopup'}>
+
+                <Link className="nav-link " to={'/userTopup'}>
                     Account Topup
+                </Link>
+
+                <Link className="nav-link mb-3" to={'/userPayView'}>
+                    View/Pay bills
                 </Link>
 
 

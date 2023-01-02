@@ -155,7 +155,7 @@ app.post("/voucher", async (req, res) => {
     }
 });
 
-
+//api to set new meter reading by the user
 app.post("/usermeterset", async (req, res) => {
     const meterdetails = { datevalue, daymeterreading, nightmeterreading, gasmeterreading, customerId } = req.body;
     try {
@@ -174,6 +174,44 @@ app.post("/usermeterset", async (req, res) => {
     } catch (error) {
         res.send({ status: "error" })
 
+    }
+
+
+});
+
+
+//api to set new meter reading by the user
+app.post("/topup", async (req, res) => {
+    const meterdetails = { voucher, customerid } = req.body;
+
+
+
+    try {
+
+        const validUser = await User.findOne({ customerid })
+        var creditValue = validUser.credit + 200;
+        const validvoucher = await Voucher.findOne({ voucher })
+
+        if (!validvoucher) {
+            console.log("Invalid voucher");
+            return res.json({ error: "Not a valid voucher" });
+
+        }
+
+        if (validvoucher.used == "true") {
+            console.log("Voucher Already used");
+            return res.json({ error: "Voucher Already used" });
+
+        }
+
+        await User.findOneAndUpdate({ customerid }, { credit: creditValue });
+
+
+        await Voucher.findOneAndUpdate({ voucher }, { used: "true" });
+        return res.send({ status: "ok" })
+
+    } catch (error) {
+        res.send({ status: "error" })
     }
 
 

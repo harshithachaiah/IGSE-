@@ -205,6 +205,7 @@ app.post("/topup", async (req, res) => {
         }
 
         await User.findOneAndUpdate({ customerid }, { credit: creditValue });
+        await User.findOneAndUpdate({ customerid }, { voucher: voucher });
 
 
         await Voucher.findOneAndUpdate({ voucher }, { used: "true" });

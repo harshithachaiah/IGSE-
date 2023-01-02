@@ -11,6 +11,7 @@ import UserMeterSet from './components/userMeterSet.component'
 import UserPayView from './components/userPayViewBill.component'
 import UserTopup from './components/userTopup.component'
 import AdminSetMeter from './components/adminsetmeter.component'
+import UserPayViewNull from './components/userPayViewBillNull.component'
 
 
 function App() {
@@ -55,6 +56,9 @@ function App() {
               <Route path="/userMeterSet" element={<UserMeterSet />} />
               <Route path="/userPayview" element={<UserPayView />} />
               <Route path="/userTopup" element={<UserTopup />} />
+              <Route path="/userPayViewNull" element={<UserPayViewNull />} />
+
+
 
 
 

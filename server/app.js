@@ -40,10 +40,6 @@ app.post("/register", async (req, res) => {
 
 
 
-
-
-
-
         if (olduser) {
             return res.json({ error: "User Exists" });
         }
@@ -123,9 +119,10 @@ app.post("/userData", async (req, res) => {
                 res.send({ status: error, data: error })
             })
     } catch (error) {
+        res.send({ status: "error" })
 
     }
-})
+});
 
 
 
@@ -180,11 +177,9 @@ app.post("/usermeterset", async (req, res) => {
 });
 
 
-//api to set new meter reading by the user
+//api to topup 
 app.post("/topup", async (req, res) => {
     const meterdetails = { voucher, customerid } = req.body;
-
-
 
     try {
 
@@ -216,6 +211,49 @@ app.post("/topup", async (req, res) => {
     }
 
 
+});
+
+
+app.post("/usermeterdata", async (req, res) => {
+    const { customerid } = req.body;
+
+
+    try {
+
+
+
+        // const olduser = await UserMeterReading.findOne({ customerid })
+        // if (!olduser) {
+
+        //     return res.json({ error: "No Readings" });
+
+        // }
+        // const olduser = await UserMeterReading.findOne({ email })
+        // console.log(olduser);
+        let user = await UserMeterReading.findOne({ customerId: customerid })
+        if (!user) {
+            return res.json({ error: "No Readings" });
+
+        }
+        else {
+            await UserMeterReading.findOne({ customerId: customerid })
+
+
+                .then((data) => {
+                    return res.send({ status: "ok", data: data });
+                })
+                .catch((error) => {
+                    return res.send({ status: error, data: error })
+                })
+
+        }
+
+
+    } catch (error) {
+
+        return res.send({ status: "error" })
+
+    }
 });
 
 

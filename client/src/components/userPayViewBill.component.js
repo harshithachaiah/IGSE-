@@ -6,6 +6,52 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
 export default class UserPayView extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            meterData: "",
+        }
+    };
+
+    componentDidMount() {
+
+
+
+        fetch("http://localhost:4000/usermeterdata", {
+            method: "POST",
+            crossDomain: true,
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Accept": "application/json",
+
+            },
+            body: JSON.stringify({
+                customerid: window.localStorage.getItem("customerid"),
+            }),
+
+        }).then((res) => res.json())
+
+            .then((data) => {
+                if (data.error === "No Readings") {
+
+                    // alert("No Reading available for this user")
+                    window.location.href = "./userPayViewNull"
+                }
+                else {
+
+                    console.log(data, "meterData")
+                    this.setState({ meterData: data.data })
+
+                }
+
+
+            })
+
+
+
+    }
+
 
     logout = () => {
         window.localStorage.clear();
@@ -24,16 +70,21 @@ export default class UserPayView extends Component {
 
 
 
-
+                <label >Date of Reading submission</label>
+                <p>{this.state.meterData.datevalue}</p>
 
 
                 <label >Electricity meter reading - Day</label>
+                <p>{this.state.meterData.daymeterreading}</p>
+
 
 
                 <label>Electricity meter reading - Night</label>
+                <p>{this.state.meterData.nightmeterreading}</p>
 
 
                 <label>Gas meter reading</label>
+                <p>{this.state.meterData.gasmeterreading}</p>
 
 
 

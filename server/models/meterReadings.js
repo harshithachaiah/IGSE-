@@ -28,7 +28,14 @@ const MeterReadings = new mongoose.Schema({
         type: String,
         required: true
 
+    },
+    payment:
+    {
+        type: String,
+        required: true
+
     }
+
 
 
 

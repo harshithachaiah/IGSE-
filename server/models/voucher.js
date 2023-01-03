@@ -8,10 +8,17 @@ const VoucherDetails = new mongoose.Schema({
     },
 
     used: {
-        type: String,
-        unique: true
+        type: String
+
 
     },
+    amount:
+    {
+        type: Number,
+        required: true
+
+    },
+
     date:
     {
         type: Date,

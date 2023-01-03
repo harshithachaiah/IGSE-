@@ -128,7 +128,7 @@ app.post("/userData", async (req, res) => {
 
 //add new voucher
 app.post("/voucher", async (req, res) => {
-    const testvoucher = { voucher } = req.body;
+    const testvoucher = { voucher, amount } = req.body;
     //console.log(testvoucher);
 
     try {
@@ -141,7 +141,9 @@ app.post("/voucher", async (req, res) => {
         await Voucher.create({
 
             voucher,
-            used: "false"
+            used: "false",
+            amount
+
 
         });
         res.send({ status: "ok" })
@@ -162,7 +164,9 @@ app.post("/usermeterset", async (req, res) => {
             daymeterreading,
             nightmeterreading,
             gasmeterreading,
-            customerId
+            customerId,
+            payment: "pending"
+
 
         });
         return res.send({ status: "ok" })
@@ -184,7 +188,8 @@ app.post("/topup", async (req, res) => {
     try {
 
         const validUser = await User.findOne({ customerid })
-        var creditValue = validUser.credit + 200;
+        const amount = await Voucher.findOne({ voucher })
+        var creditValue = validUser.credit + amount.amount;
         const validvoucher = await Voucher.findOne({ voucher })
 
         if (!validvoucher) {

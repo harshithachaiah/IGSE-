@@ -86,6 +86,9 @@ export default class UserPayView extends Component {
                 <label>Gas meter reading</label>
                 <p>{this.state.meterData.gasmeterreading}</p>
 
+                <label>Payment Status:</label>
+                <p>{this.state.meterData.payment}</p>
+
 
 
 

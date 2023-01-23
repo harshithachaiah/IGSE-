@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { version } from 'react';
+
+console.log(version);
 
 
 export default class Login extends Component {
@@ -54,12 +57,12 @@ export default class Login extends Component {
           window.localStorage.setItem("customerid", customerid)
           window.localStorage.setItem("loggedIn", true);
 
-          if (customerid == "gse@shangrila.gov.un") {
+          if (customerid === "gse@shangrila.gov.un") {
             alert("Logged in as an Admin")
             window.location.href = "./admin"
           }
           else {
-            alert("Login successful")
+            alert("Login successfull")
             window.location.href = "./userHomepage"
           }
 
@@ -118,28 +121,14 @@ export default class Login extends Component {
             onChange={(e) => this.setState({ password: e.target.value })}
           />
         </div>
-
-        <div className="mb-3">
-          <div className="custom-control custom-checkbox">
-            <input
-              type="checkbox"
-              className="custom-control-input"
-              id="customCheck1"
-            />
-            <label className="custom-control-label" htmlFor="customCheck1">
-              Remember me
-            </label>
-          </div>
-        </div>
-
         <div className="d-grid">
           <button type="submit" className="btn btn-primary">
-            Submit
+            Login
           </button>
         </div>
-        {/* <p className="forgot-password text-right">
+        <p className="forgot-password text-right">
           Forgot <a href="#">password?</a>
-        </p> */}
+        </p>
       </form>
     )
   }

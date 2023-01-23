@@ -34,7 +34,7 @@ const RegisterDetailsSchema = new mongoose.Schema({
         type: Number,
 
     },
-    // meterreading: { type: Array, "default": [], required: false },
+
     date:
     {
         type: Date,

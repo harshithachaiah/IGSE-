@@ -19,9 +19,6 @@ export default class SignUp extends Component {
   }
 
 
-
-
-
   handleSubmit(e) {
     e.preventDefault();
     const { customerid, password, address, propertytype, bedrooms, voucher } = this.state;
@@ -66,9 +63,9 @@ export default class SignUp extends Component {
           alert("Registration successfull")
           window.location.href = "./sign-in"
         }
-        // else {
-        //   alert("Enter Valid Details")
-        // }
+        else {
+          alert("Enter Valid Details")
+        }
 
       })
 
@@ -159,7 +156,7 @@ export default class SignUp extends Component {
         </div>
 
         <div className="mb-3">
-          <label>Vouchers</label>
+          <label>Voucher</label>
           <input type='text'
             required
             minLength={8}

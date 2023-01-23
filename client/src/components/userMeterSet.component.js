@@ -51,15 +51,11 @@ export default class UserMeterSet extends Component {
 
                 }
                 else {
-                    alert("Please try again")
+                    alert("Please try again! Make sure you selected the date")
                 }
 
             })
-
-
     }
-
-
 
     logout = () => {
         window.localStorage.clear();
@@ -77,9 +73,8 @@ export default class UserMeterSet extends Component {
 
                 <h3 className='auth-wrapper' color='Grey'>Enter Your Meter Readings</h3>
 
-                {/* Name<h1>{this.state.userData.fname}</h1> */}
-                {/* Email<h3>{this.state.userData.email}</h3> */}
-                <label>Select the date </label><br />
+
+                <label >Select the date </label><br />
                 <input
 
                     className='mb-3'
@@ -90,41 +85,35 @@ export default class UserMeterSet extends Component {
                     onChange={(e) => this.setState({ datevalue: e.target.value })}
 
                 />
+                <div>
+                    <label >Electricity meter reading - Day</label>
+                    <input type='number'
+                        required
+                        placeholder='e.g. 100 kWh'
+                        min={0}
+                        onChange={e => this.setState({ daymeterreading: e.target.value })}
+                        className='form-control mb-3'
+                    />
 
+                    <label>Electricity meter reading - Night</label>
+                    <input type='number'
+                        required
+                        placeholder='e.g. 250 kWh'
+                        min={0}
+                        onChange={e => this.setState({ nightmeterreading: e.target.value })}
+                        //value={this.state.}
+                        className='form-control mb-3'
+                    />
 
-
-
-
-                <label>Electricity meter reading - Day</label>
-                <input type='number'
-                    required
-                    placeholder='e.g. 100 kWh'
-                    min={0}
-                    onChange={e => this.setState({ daymeterreading: e.target.value })}
-                    className='form-control mb-3'
-                />
-
-                <label>Electricity meter reading - Night</label>
-                <input type='number'
-                    required
-                    placeholder='e.g. 250 kWh'
-                    min={0}
-                    onChange={e => this.setState({ nightmeterreading: e.target.value })}
-                    //value={this.state.}
-                    className='form-control mb-3'
-                />
-
-                <label>Gas meter reading</label>
-                <input type='number'
-                    required
-                    placeholder='e.g. 800 kWh'
-                    min={0}
-                    onChange={e => this.setState({ gasmeterreading: e.target.value })}
-                    className='form-control mb-3'
-                />
-
-
-
+                    <label>Gas meter reading</label>
+                    <input type='number'
+                        required
+                        placeholder='e.g. 800 kWh'
+                        min={0}
+                        onChange={e => this.setState({ gasmeterreading: e.target.value })}
+                        className='form-control mb-3'
+                    />
+                </div>
 
                 <div className="d-grid">
                     <button type="submit" onClick={this.handleSubmit} className="btn btn-primary mt-3 mb-3">
@@ -132,20 +121,14 @@ export default class UserMeterSet extends Component {
                     </button>
                 </div>
 
-
-
-                <div className="mb-3">
-                    <button className="btn btn-primary" onClick={this.logout}>Logout</button>
-                </div>
-
                 <p className="text-right">
                     <a href="/userHomepage">Go back </a>
                 </p>
 
+                <div className="mb-3">
+                    <button className="btn btn-primary" onClick={this.logout}>Logout</button>
+                </div>
             </div>
-
-
-
 
         );
     }

@@ -51,7 +51,7 @@ export default class UserHomepage extends Component {
                 Customer ID<h6>{this.state.userData.customerid}</h6>
                 Type of Property <h6>{this.state.userData.propertytype}</h6>
                 Bedrooms <h6>{this.state.userData.bedrooms}</h6>
-                Credit<h6>{this.state.userData.credit}£</h6><br />
+                Balance<h6>£{this.state.userData.credit}</h6><br />
 
                 <Link className="nav-link" to={'/userMeterSet'}>
                     Submit New Meter Reading
@@ -68,12 +68,7 @@ export default class UserHomepage extends Component {
 
                 <button className="btn btn-primary" onClick={this.logout}>Logout</button>
 
-
-
-
             </div>
-
-
 
         );
     }

@@ -21,10 +21,12 @@ mongoose.connect(mongoUrl, {
 require("./models/registerDetails")
 require("./models/voucher")
 require("./models/meterReadings")
+require("./models/tariff")
 
 const User = mongoose.model("UserInfo");
 const Voucher = mongoose.model("VoucherInfo")
 const UserMeterReading = mongoose.model("UserMeterReadings")
+const Tariff = mongoose.model("TariffInfo")
 
 //api to register an user
 app.post("/register", async (req, res) => {
@@ -63,12 +65,9 @@ app.post("/register", async (req, res) => {
             propertytype,
             bedrooms,
             credit: 200,
-            //meterreading,
             voucher
 
         });
-
-
 
         await Voucher.findOneAndUpdate({ voucher }, { used: "true" });
         return res.send({ status: "ok" })
@@ -126,7 +125,7 @@ app.post("/userData", async (req, res) => {
 
 
 
-//add new voucher
+//api to add new voucher
 app.post("/voucher", async (req, res) => {
     const testvoucher = { voucher, amount } = req.body;
     //console.log(testvoucher);
@@ -146,10 +145,10 @@ app.post("/voucher", async (req, res) => {
 
 
         });
-        res.send({ status: "ok" })
+        return res.send({ status: "ok" })
 
     } catch (error) {
-        res.send({ status: "error" })
+        return res.send({ status: "error" })
 
     }
 });
@@ -183,14 +182,17 @@ app.post("/usermeterset", async (req, res) => {
 
 //api to topup 
 app.post("/topup", async (req, res) => {
-    const meterdetails = { voucher, customerid } = req.body;
+    const { voucher, customerid } = req.body;
 
     try {
+        const validvoucher = await Voucher.findOne({ voucher })
 
         const validUser = await User.findOne({ customerid })
         const amount = await Voucher.findOne({ voucher })
-        var creditValue = validUser.credit + amount.amount;
-        const validvoucher = await Voucher.findOne({ voucher })
+        var creditValue = validUser.credit + (amount.amount);
+
+
+        console.log(validvoucher);
 
         if (!validvoucher) {
             console.log("Invalid voucher");
@@ -218,7 +220,7 @@ app.post("/topup", async (req, res) => {
 
 });
 
-
+//api to get the meterReading 
 app.post("/usermeterdata", async (req, res) => {
     const { customerid } = req.body;
 
@@ -226,26 +228,19 @@ app.post("/usermeterdata", async (req, res) => {
     try {
 
 
-
-        // const olduser = await UserMeterReading.findOne({ customerid })
-        // if (!olduser) {
-
-        //     return res.json({ error: "No Readings" });
-
-        // }
-        // const olduser = await UserMeterReading.findOne({ email })
-        // console.log(olduser);
         let user = await UserMeterReading.findOne({ customerId: customerid })
         if (!user) {
             return res.json({ error: "No Readings" });
 
         }
         else {
-            await UserMeterReading.findOne({ customerId: customerid })
+            await UserMeterReading.find({ customerId: customerid }).sort({ datevalue: -1 }).limit(2)
+                //await UserMeterReading.findOne({ customerId: customerid })
 
 
                 .then((data) => {
-                    return res.send({ status: "ok", data: data });
+
+                    return res.send({ status: "ok", data: data[0], actual: data });
                 })
                 .catch((error) => {
                     return res.send({ status: error, data: error })
@@ -262,8 +257,141 @@ app.post("/usermeterdata", async (req, res) => {
 });
 
 
+//api to update the tariff for admin
+app.post("/tariff", async (req, res) => {
+
+    const { electricityday, electricitynight, gas, standingcharge } = req.body;
+
+    try {
 
 
+        await Tariff.updateOne({
+
+            electricityday,
+            electricitynight,
+            gas,
+            standingcharge
+
+
+        });
+        res.send({ status: "ok" })
+
+    } catch (error) {
+        res.send({ status: "error" })
+
+    }
+
+
+});
+
+
+//api to get all the reading
+app.post("/all-meterreadings", (req, res) => {
+
+
+    UserMeterReading.find()
+        //UserMeterReading.findAll({ customerId: customerid })
+        .then(result => {
+            return res.send(result);
+
+        }).catch((error) => {
+            console.log(error);
+            return res.send({ status: "error" })
+
+        })
+
+
+});
+
+
+
+
+// api to get the latest bill of the customer
+app.get("/getenergystatistics", async (req, res) => {
+    try {
+        const meterReadings = await UserMeterReading.find();
+        // merge duplicate customers
+        let newData = [...new Set(meterReadings.map((d) => d.customerId))].map(
+            (customerId) => {
+                return {
+                    customerId,
+                    daymeterreading: meterReadings
+                        .filter((d) => d.customerId === customerId)
+                        .sort((a, b) => a.datevalue - b.datevalue)
+                        .map((d) => d.daymeterreading)
+                        .find((d) => d),
+                    nightmeterreading: meterReadings
+                        .filter((d) => d.customerId === customerId)
+                        .sort((a, b) => a.datevalue - b.datevalue)
+                        .map((d) => d.nightmeterreading)
+                        .find((d) => d),
+                    gasmeterreading: meterReadings
+                        .filter((d) => d.customerId === customerId)
+                        .sort((a, b) => a.datevalue - b.datevalue)
+                        .map((d) => d.gasmeterreading)
+                        .find((d) => d),
+                    datevalue: meterReadings
+                        .filter((d) => d.customerId === customerId)
+                        .sort((a, b) => a.datevalue - b.datevalue)
+                        .map((d) => d.datevalue)
+                        .find((d) => d),
+                };
+            }
+        );
+        return res.status(200).send({ data: newData, status: "ok" });
+    } catch (error) {
+        console.log(error);
+        res.status(403).send({ status: "error" });
+    }
+});
+
+//task 2
+
+//api to get the property count in an required json format
+app.get("/igse/propertycount", async (req, res) => {
+    try {
+        const data = await User.aggregate([
+            {
+                $project: {
+                    propertytype: 1,
+                },
+            },
+            {
+                $group: {
+                    _id: "$propertytype",
+                    total: { $sum: 1 },
+                },
+            },
+        ]);
+        const result = [];
+        data.map((item, i) => {
+            if (item._id === "flat") {
+                result.push({ [item._id]: item.total });
+            }
+            if (item._id === "cottage") {
+                result.push({ [item._id]: item.total });
+            }
+            if (item._id === "semi-detached") {
+                result.push({ [item._id]: item.total });
+            }
+            if (item._id === "terraced") {
+                result.push({ [item._id]: item.total });
+            }
+            if (item._id === "bungalow") {
+                result.push({ [item._id]: item.total });
+            }
+            if (item._id === "mansion") {
+                result.push({ [item._id]: item.total });
+            }
+            if (item._id === "detached") {
+                result.push({ [item._id]: item.total });
+            }
+        });
+        res.send(result);
+    } catch (error) {
+        res.send(console.log(error));
+    }
+});
 
 
 

@@ -44,14 +44,8 @@ export default class UserPayView extends Component {
                     this.setState({ meterData: data.data })
 
                 }
-
-
             })
-
-
-
     }
-
 
     logout = () => {
         window.localStorage.clear();
@@ -66,32 +60,24 @@ export default class UserPayView extends Component {
             <div>
 
                 <h3 className='auth-wrapper' color='Grey'>View/Pay Bills</h3>
-
-
+                <h5 className='auth-wrapper' color='Grey'>Latest Bill</h5>
 
 
                 <label >Date of Reading submission</label>
                 <p>{this.state.meterData.datevalue}</p>
 
-
                 <label >Electricity meter reading - Day</label>
                 <p>{this.state.meterData.daymeterreading}</p>
 
-
-
                 <label>Electricity meter reading - Night</label>
                 <p>{this.state.meterData.nightmeterreading}</p>
-
 
                 <label>Gas meter reading</label>
                 <p>{this.state.meterData.gasmeterreading}</p>
 
                 <label>Payment Status:</label>
-                <p>{this.state.meterData.payment}</p>
 
-
-
-
+                <p >{this.state.meterData.payment}</p>
 
                 <div className="d-grid">
                     <button type="submit" className="btn btn-primary mt-3 mb-3">
@@ -99,20 +85,15 @@ export default class UserPayView extends Component {
                     </button>
                 </div>
 
-
+                <p className="text-right">
+                    <a href="/userHomepage">Go back </a>
+                </p>
 
                 <div className="mb-3">
                     <button className="btn btn-primary" onClick={this.logout}>Logout</button>
                 </div>
 
-                <p className="text-right">
-                    <a href="/userHomepage">Go back </a>
-                </p>
-
             </div>
-
-
-
 
         );
     }

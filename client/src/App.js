@@ -12,6 +12,11 @@ import UserPayView from './components/userPayViewBill.component'
 import UserTopup from './components/userTopup.component'
 import AdminSetMeter from './components/adminsetmeter.component'
 import UserPayViewNull from './components/userPayViewBillNull.component'
+import AdminAddVoucher from './components/adminAddNewVoucher.component'
+import AdminMeterRead from './components/adminMeterRead.component'
+import AdminEnergyStatics from './components/adminEnergyStatistic.component'
+
+
 
 
 function App() {
@@ -20,27 +25,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-          <div className="container">
-            <Link className="navbar-brand" to={'/sign-in'}>
-              IGSE Energy APP
-            </Link>
-            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link className="nav-link" to={'/sign-in'}>
-                    Login
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to={'/sign-up'}>
-                    Sign up
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav> */}
+
 
         <div className="auth-wrapper">
           <div className="auth-inner">
@@ -57,10 +42,9 @@ function App() {
               <Route path="/userPayview" element={<UserPayView />} />
               <Route path="/userTopup" element={<UserTopup />} />
               <Route path="/userPayViewNull" element={<UserPayViewNull />} />
-
-
-
-
+              <Route path="/adminaddvoucher" element={<AdminAddVoucher />} />
+              <Route path="/adminmeterread" element={<AdminMeterRead />} />
+              <Route path="/adminenergystatics" element={<AdminEnergyStatics />} />
 
 
             </Routes>

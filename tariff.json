@@ -1,0 +1,12 @@
+{
+    "tariffs": [
+        {
+            "_id": "63b48bb3f420dc04e3821b37",
+            "electricityday": 0.34,
+            "electricitynight": 0.28,
+            "gas": 0.2,
+            "standingcharge": 0.5,
+            "__v": 0
+        }
+    ]
+}

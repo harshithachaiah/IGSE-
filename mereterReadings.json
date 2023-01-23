@@ -1,0 +1,125 @@
+{
+    "users": [
+        {
+            "_id": "63adb2a246b6b6f810e92ab6",
+            "datevalue": "2023-01-07",
+            "daymeterreading": 100,
+            "nightmeterreading": 200,
+            "gasmeterreading": 300,
+            "customerId": "a@gmail.com",
+            "__v": 0
+        },
+        {
+            "_id": "63adb2c546b6b6f810e92aba",
+            "datevalue": "2023-01-08",
+            "daymeterreading": 111,
+            "nightmeterreading": 111,
+            "gasmeterreading": 111,
+            "customerId": "a@gmail.com",
+            "__v": 0
+        },
+        {
+            "_id": "63b2afc19b8a2718cb8dc674",
+            "datevalue": "2023-01-08",
+            "daymeterreading": 1001,
+            "nightmeterreading": 1001,
+            "gasmeterreading": 1001,
+            "customerId": "a@gmail.com",
+            "__v": 0
+        },
+        {
+            "_id": "63b2afcd9b8a2718cb8dc676",
+            "datevalue": "2023-01-08",
+            "daymeterreading": 1001,
+            "nightmeterreading": 1001,
+            "gasmeterreading": 1001,
+            "customerId": "a@gmail.com",
+            "__v": 0
+        },
+        {
+            "_id": "63b2b2f69b8a2718cb8dc684",
+            "datevalue": "2023-01-09",
+            "daymeterreading": 2002,
+            "nightmeterreading": 2002,
+            "gasmeterreading": 2002,
+            "customerId": "b@gmail.com",
+            "__v": 0
+        },
+        {
+            "_id": "63b2dc3853c111521e8e8392",
+            "datevalue": "2023-01-18",
+            "daymeterreading": 111,
+            "nightmeterreading": 111,
+            "gasmeterreading": 111,
+            "customerId": "babita@gmail.com",
+            "__v": 0
+        },
+        {
+            "_id": "63b2f7379ea22081feec3821",
+            "datevalue": "2023-01-05",
+            "daymeterreading": 5,
+            "nightmeterreading": 5,
+            "gasmeterreading": 5,
+            "customerId": "b@gmail.com",
+            "__v": 0
+        },
+        {
+            "_id": "63b2f78b061c8e774b87d74e",
+            "datevalue": "2023-01-06",
+            "daymeterreading": 6,
+            "nightmeterreading": 6,
+            "gasmeterreading": 6,
+            "customerId": "b@gmail.com",
+            "__v": 0
+        },
+        {
+            "_id": "63b30ddf76796e0eeeef5ab9",
+            "datevalue": "2023-01-10",
+            "daymeterreading": 9999,
+            "nightmeterreading": 9999,
+            "gasmeterreading": 456,
+            "customerId": "test@gmail.com",
+            "__v": 0
+        },
+        {
+            "_id": "63b47d152774e6df0f9929ee",
+            "datevalue": "2023-01-21",
+            "daymeterreading": 999,
+            "nightmeterreading": 555,
+            "gasmeterreading": 777,
+            "customerId": "ankith@gmail.com",
+            "payment": "pending",
+            "__v": 0
+        },
+        {
+            "_id": "63b5dea0c2bf55fb19a5cdad",
+            "datevalue": "2023-01-12",
+            "daymeterreading": 5555,
+            "nightmeterreading": 5555,
+            "gasmeterreading": 345,
+            "customerId": "h@gmail.com",
+            "payment": "pending",
+            "__v": 0
+        },
+        {
+            "_id": "63b75973f1f74f9583842861",
+            "datevalue": "2023-01-10",
+            "daymeterreading": 666,
+            "nightmeterreading": 666,
+            "gasmeterreading": 666,
+            "customerId": "a@gmail.com",
+            "payment": "pending",
+            "__v": 0
+        },
+        {
+            "_id": "63b85f0fb42cb07898006731",
+            "datevalue": "2023-01-06",
+            "daymeterreading": 123,
+            "nightmeterreading": 123,
+            "gasmeterreading": 123,
+            "customerId": "ankith@gmail.com",
+            "payment": "pending",
+            "__v": 0
+        }
+    ]
+}

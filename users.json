@@ -1,0 +1,124 @@
+{
+    "users": [
+        {
+            "_id": "63a42dd7e8ad7c5a0521bc61",
+            "customerid": "gse@shangrila.gov.un",
+            "password": "$2a$10$QR0EjoiWb7BfF0L2FemoVuESVc8jPoCHJusep16LsN32sK90Nj0Zu",
+            "address": "United Kingdom",
+            "propertytype": "Flat",
+            "bedrooms": 9,
+            "voucher": "NA",
+            "credit": 700,
+            "date": "2022-12-22T10:13:43.778Z",
+            "__v": 0
+        },
+        {
+            "_id": "63a5c4e1f9a989b1c9454372",
+            "customerid": "nayana@gmail.com",
+            "password": "$2a$10$y3y95346pwXCo3nR.jnNneZUn9fS1v86.YOv/kUvtmdv2kZxC.d9q",
+            "address": "Coorg",
+            "propertytype": "bungalow",
+            "bedrooms": 8,
+            "voucher": "",
+            "credit": 200,
+            "date": "2022-12-23T15:10:25.078Z",
+            "__v": 0
+        },
+        {
+            "_id": "63a5c536f9a989b1c9454378",
+            "customerid": "ganesh@gmail.com",
+            "password": "$2a$10$mFDxaCbPOd0RZHNlu1ddDuaDfF8XwCpmUMWbluuw5kQhPVY.D/R/.",
+            "address": "Bhagamandala",
+            "propertytype": "mansion",
+            "bedrooms": 10,
+            "voucher": "",
+            "credit": 200,
+            "date": "2022-12-23T15:11:50.792Z",
+            "__v": 0
+        },
+        {
+            "_id": "63a5c63dc8ac5a4c3399497f",
+            "customerid": "ankith@gmail.com",
+            "password": "$2a$10$RN0nVSwiwAsujn3GSjmCLuwhJ.5ArHASWa2Z0Q13mN7uWw1piKu76",
+            "address": "coorg",
+            "propertytype": "terraced",
+            "bedrooms": 8,
+            "voucher": "AVENUEHO",
+            "credit": 3000,
+            "date": "2022-12-23T15:16:13.948Z",
+            "__v": 0
+        },
+        {
+            "_id": "63a812e2e77247e4177b3b93",
+            "customerid": "harshith@gmail.com",
+            "password": "$2a$10$m/UYyGS7MIpLWgyhM3a0COEwlCQLfE50o9h0LQEoGKXNxjOjgpWCu",
+            "address": "Leicester",
+            "propertytype": "bungalow",
+            "bedrooms": 8,
+            "voucher": "",
+            "credit": 200,
+            "date": "2022-12-25T09:07:46.900Z",
+            "__v": 0
+        },
+        {
+            "_id": "63b2aeb19b8a2718cb8dc66d",
+            "customerid": "a@gmail.com",
+            "password": "$2a$10$coJtM7lY3uTvtgSqi/eq7ONTdlTlDThGPskwSAo3LZ5iDNmoVitqy",
+            "address": "a",
+            "propertytype": "mansion",
+            "bedrooms": 9,
+            "voucher": "HARIPRAS",
+            "credit": 1800,
+            "date": "2023-01-02T10:15:13.671Z",
+            "__v": 0
+        },
+        {
+            "_id": "63b2b2df9b8a2718cb8dc67e",
+            "customerid": "b@gmail.com",
+            "password": "$2a$10$b1YZxdHmakT53H6.Bok4rOU3RpMAHN.fRM5UsZLAtWF2UICw6roxa",
+            "address": "b",
+            "propertytype": "bungalow",
+            "bedrooms": 9,
+            "voucher": "DM8LEESR",
+            "credit": 1500,
+            "date": "2023-01-02T10:33:03.705Z",
+            "__v": 0
+        },
+        {
+            "_id": "63b30da876796e0eeeef5ab3",
+            "customerid": "test@gmail.com",
+            "password": "$2a$10$jsllQ3RfTu4itR7P5ggUMe6Ql9Sb5w3scFHLomeZahXQvE8AwuZ62",
+            "address": "test",
+            "propertytype": "terraced",
+            "bedrooms": 9,
+            "voucher": "DM8LEESR",
+            "credit": 400,
+            "date": "2023-01-02T17:00:24.802Z",
+            "__v": 0
+        },
+        {
+            "_id": "63b30e9676796e0eeeef5ae3",
+            "customerid": "y@gmail.com",
+            "password": "$2a$10$tleJCgfIl4ii1TvZa3TvuOmx1ovcJlBLNzMoSQE5GohhwoLGaR7By",
+            "address": "y",
+            "propertytype": "flat",
+            "bedrooms": 9,
+            "voucher": "XTX2GZAD",
+            "credit": 200,
+            "date": "2023-01-02T17:04:22.154Z",
+            "__v": 0
+        },
+        {
+            "_id": "63b5de3dc2bf55fb19a5cda2",
+            "customerid": "h@gmail.com",
+            "password": "$2a$10$pDHrAJa3asMJwhS6fZD5Ae3vDa8CP5rce23caiOaW0IiGZfmukt92",
+            "address": "h",
+            "propertytype": "terraced",
+            "bedrooms": 9,
+            "voucher": "QAZWSXED",
+            "credit": 2200,
+            "date": "2023-01-04T20:14:53.772Z",
+            "__v": 0
+        }
+    ]
+}

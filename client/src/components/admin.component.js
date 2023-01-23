@@ -21,15 +21,24 @@ export default class Admin extends Component {
                 <h1 className='auth-wrapper' color='Blue'>Admin Dashboard</h1>
 
 
-                <Link className="nav-link" to={'/adminsetmeter'}>
-                    Set Meter Reading
+                <Link className="nav-link mb-10" to={'/adminsetmeter'}>
+                    Set Tariff
                 </Link>
-                {/* <Link className="nav-link" to={'/userPayView'}>
-                    View/Pay bills
+
+                <Link className="nav-link " to={'/adminaddvoucher'}>
+                    Add New Voucher
                 </Link>
-                <Link className="nav-link mb-3" to={'/userTopup'}>
-                    Account Topup
-                </Link> */}
+
+
+                <Link className="nav-link" to={'/adminmeterread'}>
+                    View Meter Reading
+                </Link>
+
+                <Link className="nav-link" to={'/adminenergystatics'}>
+                    View Energy Statistic
+                </Link>
+
+
 
 
 

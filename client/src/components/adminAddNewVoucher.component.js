@@ -3,24 +3,24 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
 
-
-export default class UserTopup extends Component {
+export default class AdminAddVoucher extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
 
-            voucher: ""
+            voucher: "",
+            amount: ""
+
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     };
-
     handleSubmit(e) {
 
         e.preventDefault();
-        const { voucher } = this.state;
-        console.log(voucher);
-        fetch("http://localhost:4000/topup", {
+        const { voucher, amount } = this.state;
+        console.log(voucher, amount);
+        fetch("http://localhost:4000/voucher", {
             method: "post",
             croossDomain: true,
             headers: {
@@ -29,40 +29,41 @@ export default class UserTopup extends Component {
                 "Access-Control-Allow-Origin": "*"
             },
             body: JSON.stringify({
-
                 voucher,
-                customerid: window.localStorage.getItem("customerid")
+                amount
 
 
             }),
         }).then((res) => res.json())
             .then((data) => {
 
-                if (data.error === "Not a valid voucher") {
-
-                    alert("Enter valid voucher")
-                }
-
-                if (data.error === "Voucher Already used") {
-
-                    alert("Voucher Already used")
-                }
 
 
                 if (data.status === "ok") {
-                    console.log(data, "Topup Successfull");
-                    alert("Topup Successfull")
-                    window.location.href = "./userHomepage"
+                    console.log(data, "Voucher Added");
+                    alert("Voucher Added")
+                    //window.location.href = "./admin"
 
                 }
+                else if (data.error === "Voucher Exists") {
+
+                    alert("Voucher Exists")
+                }
                 else {
-                    alert("Enter valid voucher")
+                    alert("Please try again")
                 }
 
             })
 
 
     }
+
+
+
+
+
+
+
 
 
     logout = () => {
@@ -73,12 +74,10 @@ export default class UserTopup extends Component {
 
 
     render() {
-
         return (
             <div>
 
-                <h3 className='auth-wrapper' color='Grey'>Topup</h3>
-
+                <h1 className='auth-wrapper' color='Blue'>Add Voucher</h1>
                 <div className="mb-3">
                     <label>Voucher</label>
                     <input type='text'
@@ -90,22 +89,33 @@ export default class UserTopup extends Component {
                     />
                 </div>
 
-                <div className="d-grid">
-                    <button type="submit" onClick={this.handleSubmit} className="btn btn-primary mt-3 mb-3">
-                        Topup
+                <label>Voucher Value</label>
+                <input type='number' min='0'
+                    placeholder='Enter the amount in £'
+                    onChange={e => this.setState({ amount: e.target.value })}
+                    className='form-control form-group mb-3'
+                />
+
+
+                <div className="d-grid mb-3">
+                    <button type="submit" onClick={this.handleSubmit} className="btn btn-primary">
+                        Add
                     </button>
                 </div>
 
                 <p className="text-right">
-                    <a href="/userHomepage">Go Back</a>
+                    <a href="/admin">Go back </a>
                 </p>
 
-                <div className="mb-3">
-                    <button className="btn btn-primary" onClick={this.logout}>Logout</button>
-                </div>
+
+                <button className="btn btn-primary mb-3" onClick={this.logout}>Logout</button>
+
 
 
             </div>
+
+
+
         );
     }
 }
